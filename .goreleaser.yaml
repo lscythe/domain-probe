@@ -1,0 +1,29 @@
+version: 2
+
+project_name: domain-checker
+
+before:
+  hooks:
+    - go mod tidy
+
+builds:
+  - id: domain-checker
+    main: ./cmd/domain-checker
+    binary: domain-checker
+    goos: [linux, darwin]
+    goarch: [amd64, arm64]
+    env:
+      - CGO_ENABLED=0
+
+archives:
+  - formats: [tar.gz]
+    name_template: >-
+      {{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}
+
+checksum:
+  name_template: checksums.txt
+
+release:
+  github:
+    owner: lscythe
+    name: domain-checker
