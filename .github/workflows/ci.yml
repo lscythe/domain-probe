@@ -26,4 +26,4 @@ jobs:
       - name: Vet
         run: go vet ./...
       - name: Build
-        run: go build -o domain-checker ./cmd/domain-checker
+        run: go build -o domain-probe ./cmd/domain-probe

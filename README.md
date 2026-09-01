@@ -1,4 +1,4 @@
-# domain-checker
+# domain-probe
 
 A fast terminal utility for checking domain availability across RDAP and WHOIS, with pricing and lifecycle details.
 
@@ -17,19 +17,19 @@ A fast terminal utility for checking domain availability across RDAP and WHOIS, 
 ### Install the latest release
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/lscythe/domain-checker/main/scripts/install.sh | sh
+curl -fsSL https://raw.githubusercontent.com/lscythe/domain-probe/main/scripts/install.sh | sh
 ```
 
 The script installs the latest archive into `~/.local/bin` by default. Override the destination with `INSTALL_DIR`:
 
 ```sh
-INSTALL_DIR=/usr/local/bin curl -fsSL https://raw.githubusercontent.com/lscythe/domain-checker/main/scripts/install.sh | sh
+INSTALL_DIR=/usr/local/bin curl -fsSL https://raw.githubusercontent.com/lscythe/domain-probe/main/scripts/install.sh | sh
 ```
 
 ### Go install
 
 ```sh
-go install github.com/lscythe/domain-checker/cmd/domain-checker@latest
+go install github.com/lscythe/DomainProbe/cmd/domain-probe@latest
 ```
 
 ### Build from source
@@ -37,25 +37,25 @@ go install github.com/lscythe/domain-checker/cmd/domain-checker@latest
 Requires Go 1.24 or newer.
 
 ```sh
-git clone https://github.com/lscythe/domain-checker.git
-cd domain-checker
-go build -o domain-checker ./cmd/domain-checker
+git clone https://github.com/lscythe/domain-probe.git
+cd domain-probe
+go build -o domain-probe ./cmd/domain-probe
 ```
 
 ## Usage
 
 ```sh
-domain-checker example
+domain-probe example
 # Checks example.com, example.net, example.org, example.io, and example.dev
 
-domain-checker example.com example.dev
+domain-probe example.com example.dev
 
-domain-checker -tld popular acme
+domain-probe -tld popular acme
 
-domain-checker -f names.txt
-cat names.txt | domain-checker
+domain-probe -f names.txt
+cat names.txt | domain-probe
 
-domain-checker -plain acme.com example.dev
+domain-probe -plain acme.com example.dev
 ```
 
 A token containing a dot is checked as-is. Bare names are expanded across the TLDs selected with `-tld`. Use `-tld all` to query every TLD with an RDAP service.
@@ -80,7 +80,7 @@ When running interactively, more than 20 results opens the browser view. Press `
 Auction lookups require a Dynadot API key:
 
 ```sh
-DYNADOT_API_KEY=your-key domain-checker -auction example
+DYNADOT_API_KEY=your-key domain-probe -auction example
 ```
 
 ## Development
@@ -88,7 +88,7 @@ DYNADOT_API_KEY=your-key domain-checker -auction example
 ```sh
 go test ./...
 go vet ./...
-go build ./cmd/domain-checker
+go build ./cmd/domain-probe
 ```
 
 Releases are published automatically when a version tag such as `v1.0.0` is pushed. GitHub Actions builds archives for Linux and macOS on amd64 and arm64, then publishes checksums.

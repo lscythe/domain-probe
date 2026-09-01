@@ -42,7 +42,7 @@ func main() {
 	}
 }
 func usage() {
-	fmt.Fprintln(os.Stderr, "domain-checker - check domain availability via RDAP, falling back to WHOIS")
+	fmt.Fprintln(os.Stderr, "domain-probe - check domain availability via RDAP, falling back to WHOIS")
 }
 func run(c *Checker, domains []string, workers int, timeout time.Duration, auction bool) []Result {
 	out := make([]Result, len(domains))

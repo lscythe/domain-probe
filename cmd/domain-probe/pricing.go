@@ -27,7 +27,7 @@ func pricingCachePath() string {
 	if err != nil {
 		return ""
 	}
-	return filepath.Join(dir, "domain-checker", "porkbun-pricing.json")
+	return filepath.Join(dir, "domain-probe", "porkbun-pricing.json")
 }
 
 // TLDPrice is the first-year registration price and the renewal that follows it.
