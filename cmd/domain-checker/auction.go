@@ -1,4 +1,4 @@
-package domainchecker
+package main
 
 import (
 	"context"
